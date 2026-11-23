@@ -2,7 +2,7 @@
 
 !!! info "Last reviewed"
 
-    November 2026. This section is updated regularly. Items marked **Core** have stayed useful over time; **Trending** items are newer and worth trying.
+    23 November 2026. This section is updated regularly. Items marked **Core** have stayed useful over time; **Trending** items are newer and worth trying.
 
 ## 6.1 Official sources to follow (check these first)
 
@@ -10,19 +10,19 @@
 - Anthropic official skills: [github.com/anthropics/skills](https://github.com/anthropics/skills)
 - Claude Code repo and release notes: [github.com/anthropics/claude-code](https://github.com/anthropics/claude-code)
 - OpenAI Codex: [github.com/openai/codex](https://github.com/openai/codex)
-- MCP server directory: [github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+- MCP server directory: [github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) (reference servers only) and the official [MCP Registry](https://registry.modelcontextprotocol.io/) for published servers
 
 ## 6.2 Recommended MCP servers
 
 - **Core — Context7:** pulls up-to-date library documentation into Claude, so it stops using outdated code.
 - **Core — Playwright:** lets Claude open and control a browser to test what it built.
-- **Core — GitHub:** issues, pull requests and repos (or just let Claude use the `gh` tool from Step 1.5).
+- **Core — GitHub:** issues, pull requests and repos (or just let Claude use the `gh` tool from Step 1.5). Use GitHub's own [github-mcp-server](https://github.com/github/github-mcp-server); the older reference GitHub server in the MCP servers repo is archived.
 - **Situational:** Notion, Slack, Google Drive, Linear, Supabase, Figma — add only when you actually use that tool.
 
 ## 6.3 Recommended skills
 
-- **Core — Anthropic document skills:** Word, Excel, PowerPoint and PDF creation.
-- **Core — Skill creator:** helps you build your own skills properly.
+- **Core — Anthropic document skills:** Word, Excel, PowerPoint and PDF creation. Install with `/plugin marketplace add anthropics/skills`, then `/plugin install document-skills@anthropic-agent-skills`.
+- **Core — Skill creator:** helps you build your own skills properly. Included in the same repo (`skills/skill-creator`), installable via `example-skills@anthropic-agent-skills`.
 - **Your own:** the best skills are the ones you write for your own repeated work.
 
 ## 6.4 Community resources
