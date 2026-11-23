@@ -1,0 +1,38 @@
+name: Weekly guide update
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 06:00 UTC
+  workflow_dispatch: # Also runnable by hand from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        env:
+          # Lets the gh tool open the pull request.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Use this workflow's own token (with the permissions above)
+          # instead of the Claude GitHub App.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          prompt: |
+            Audit every install command, package name, slash command,
+            tool and link in docs/ against the official sources listed in the Living Toolkit
+            page and current web results. Fix anything deprecated, renamed or broken. Refresh
+            the Living Toolkit recommendations. Update the 'Last reviewed' date. Open ONE pull
+            request titled 'Weekly guide update <date>' listing every change and its source.
+            If nothing changed, open no pull request.
+          claude_args: >-
+            --allowedTools "WebSearch,WebFetch,Read,Glob,Grep,Edit,Write,Bash(git:*),Bash(gh:*),Bash(date:*)"

@@ -1,0 +1,132 @@
+# Part 2: Install and set up Claude Code (the bedrock)
+
+## Step 2.1: Install Claude Code
+
+Always check the official page first, since the recommended method can change: **[code.claude.com/docs](https://code.claude.com/docs)** → Setup. *(Verified November 2026.)*
+
+**Mac (native installer, recommended):**
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows (PowerShell, native installer):**
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+**Alternatives:** Homebrew (Mac) or winget (Windows). These don't update automatically, so the native installer above is preferred. *(The old npm method is deprecated — don't use it.)*
+
+```bash
+brew install --cask claude-code        # Mac
+winget install Anthropic.ClaudeCode    # Windows
+```
+
+!!! note "Windows note"
+
+    No administrator rights needed. Works on Windows 10 (1809 or later) and 11. Git for Windows (Step 1.4) is recommended so Claude can use its Bash tool; without it, Claude Code falls back to PowerShell. WSL is optional.
+
+Close and reopen your terminal, then check it:
+
+```bash
+claude --version
+```
+
+If something looks wrong, run the built-in health check:
+
+```bash
+claude doctor
+```
+
+## Step 2.2: Start Claude Code and log in
+
+Always start Claude **inside a project folder**, because Claude can see and change files in the folder you open it from.
+
+```bash
+cd ~/projects
+mkdir my-first-project
+cd my-first-project
+claude
+```
+
+(On Windows, use `cd $HOME\projects` for the first line.)
+
+The first time, it will ask you to pick a theme and log in. Choose your **Claude account** (Pro/Max) and approve in the browser window that opens.
+
+## Step 2.3: Your first conversation
+
+Just type in plain English. Try:
+
+> *"Explain what you can do in this folder, then create a simple web page that says hello and open it in my browser."*
+
+Claude will propose actions and **ask permission** before editing files or running commands. Read what it wants to do, then approve. You are always in control.
+
+## Step 2.4: The controls you must know
+
+- **Enter** — send your message.
+- **Esc** — stop Claude mid-task (safe; nothing breaks).
+- **Esc twice** — jump back to an earlier message and try again.
+- **Shift + Tab** — cycle modes: normal → auto-accept edits → **Plan mode**.
+- **@filename** — point Claude at a specific file.
+- **Drag an image** or screenshot into the terminal to show Claude what you mean.
+- **!** at the start of a line — run a terminal command directly.
+- **Ctrl + C** twice, or type `/exit` — quit.
+
+## Step 2.5: Slash commands worth learning
+
+Type `/` to see them all. The essentials:
+
+- `/init` — Claude studies your project and writes a starter **CLAUDE.md** for it. Run this in every new project.
+- `/clear` — start fresh. Use it between unrelated tasks; old context makes Claude worse, not better.
+- `/compact` — summarise a long conversation to free up space. Use /context to see how full it is.
+- `/model` — choose which Claude model to use.
+- `/permissions` — decide what Claude may do without asking.
+- `/mcp` — see and manage connected tools.
+- `/agents` — create specialised helper agents (subagents).
+- `/resume` — pick up a past session. (Or start with `claude --continue`.)
+- `/cost` or `/usage` — see how much you've used.
+- `/help` — everything else.
+
+## Step 2.6: Write a great CLAUDE.md
+
+CLAUDE.md is the single highest-leverage thing a beginner can set up. Claude reads it at the start of every session.
+
+There are two kinds:
+
+- **Project:** `CLAUDE.md` in the project folder. Rules for that project.
+- **Personal (global):** `~/.claude/CLAUDE.md`. Your preferences for every project.
+
+A good CLAUDE.md is short and specific. Example:
+
+```markdown
+# About me
+I'm not a developer. Explain what you're doing in plain English before you do it.
+
+# How to work
+- Make a plan and show it to me before big changes.
+- Make small changes and test them.
+- Commit to Git after each working step with a clear message.
+- Never delete files or push to GitHub without asking.
+
+# This project
+A personal website. Built with plain HTML and CSS.
+```
+
+!!! tip
+
+    When Claude makes the same mistake twice, tell it: *"Add a rule to CLAUDE.md so you don't do that again."*
+
+## Step 2.7: Set safe permissions
+
+Run `/permissions` and allow the harmless, repetitive things (like reading files) so Claude stops asking every time, while still asking before deleting or pushing.
+
+!!! warning
+
+    You may see advice to run Claude with "skip all permissions". **Don't**, as a beginner. It lets Claude run anything without asking.
+
+## Step 2.8: Other ways to use Claude Code
+
+- **VS Code / Cursor extension:** search "Claude Code" in the Extensions panel for a friendlier view with side-by-side changes.
+- **Claude Desktop and [claude.ai](https://claude.ai):** Claude Code is also available in the desktop app and on the web for working on GitHub repos without a terminal.
+- **GitHub integration:** run `/install-github-app` so you can mention **@claude** in GitHub issues and pull requests.
