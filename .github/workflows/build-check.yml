@@ -14,6 +14,9 @@ permissions:
 
 jobs:
   build:
+    # Same name as the check the weekly job posts, so branch protection can
+    # require one check for every pull request.
+    name: Site builds
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
