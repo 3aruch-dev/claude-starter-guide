@@ -77,12 +77,47 @@ h1#_top {
 }
 
 /* Softer, rounder code blocks and asides */
+.sl-markdown-content .expressive-code,
+.expressive-code {
+	--ec-brdRad: 0.9rem;
+	--ec-codePadBlk: 1rem;
+	--ec-codePadInl: 1.25rem;
+}
 .expressive-code .frame {
-	border-radius: 0.6rem;
+	border-radius: 0.9rem;
 	overflow: hidden;
 }
 .starlight-aside {
-	border-radius: 0.5rem;
+	border-radius: 0.75rem;
+}
+
+/* Copy button: a soft rounded square, inset from the corner */
+.expressive-code .copy {
+	inset-block-start: 0.6rem;
+	inset-inline-end: 0.6rem;
+	align-items: center;
+}
+.expressive-code .copy button {
+	width: 2.1rem;
+	height: 2.1rem;
+	border-radius: 0.6rem;
+	opacity: 0.85;
+}
+.expressive-code .copy button::after {
+	margin: 0.45rem;
+}
+/* "Copied!" bubble: a small rounded pill */
+.expressive-code .copy .feedback {
+	margin-inline-end: 0.4rem;
+	padding: 0.2rem 0.75rem;
+	border-radius: 999px;
+	font-family: var(--__sl-font);
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	line-height: 1.6;
+}
+.expressive-code .copy .feedback::after {
+	display: none;
 }
 
 /* ---------- Tabs: make the Mac / Windows choice stand out ---------- */
@@ -210,16 +245,24 @@ starlight-tabs [role='tab'][aria-selected='true'] {
 }
 .expressive-code .frame.is-terminal .header {
 	justify-content: flex-start;
-	padding-inline-start: 3.75rem;
-	min-height: 2.4rem;
+	align-items: center;
+	box-sizing: border-box;
+	height: 2.9rem;
+	padding-block: 0;
+	padding-inline-start: 4rem;
 }
+.expressive-code .frame.is-terminal .header::before {
+	left: 1.25rem;
+}
+/* Centre the button in the 2.9rem title bar: (2.9 - 1.9) / 2 = 0.5rem */
 .expressive-code .frame.is-terminal .copy {
-	inset-block-start: 0.2rem;
-	inset-inline-end: 0.3rem;
+	inset-block-start: 0.5rem;
+	inset-inline-end: 0.6rem;
 }
 .expressive-code .frame.is-terminal .copy button {
-	width: 2rem;
-	height: 2rem;
+	width: 1.9rem;
+	height: 1.9rem;
+	border-radius: 0.55rem;
 	opacity: 1;
 }
 .expressive-code .frame.is-terminal .copy button::after {
@@ -227,7 +270,7 @@ starlight-tabs [role='tab'][aria-selected='true'] {
 }
 /* Other boxes: keep the first line clear of the button */
 .expressive-code .frame:not(.is-terminal) pre > code > .ec-line:first-child .code {
-	padding-inline-end: 2.75rem;
+	padding-inline-end: 3rem;
 }
 .expressive-code .frame.is-terminal .header .title {
 	font-family: var(--__sl-font);
@@ -280,7 +323,8 @@ starlight-tabs [role='tab'][aria-selected='true'] {
 		font-size: 0.8rem;
 	}
 	.sl-markdown-content .expressive-code {
-		--ec-codePadInl: 0.75rem;
+		--ec-codePadInl: 1rem;
+		--ec-codePadBlk: 0.9rem;
 	}
 	/* Numbered steps: a slimmer number column leaves more room for content */
 	.sl-steps {
