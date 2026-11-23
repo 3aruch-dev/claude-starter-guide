@@ -30,7 +30,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
             Audit every install command, package name, slash command,
-            tool and link in docs/ against the official sources listed in the Living Toolkit
+            tool and link in src/content/docs/ against the official sources listed in the Living Toolkit
             page and current web results. Fix anything deprecated, renamed or broken. Refresh
             the Living Toolkit recommendations. Update the 'Last reviewed' date. Open ONE pull
             request titled 'Weekly guide update <date>' listing every change and its source.
@@ -40,10 +40,9 @@ jobs:
 
       # GitHub doesn't run other workflows on pull requests opened by this job,
       # so build the weekly pull request here and attach the result to it.
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-node@v7
         with:
-          python-version: "3.12"
-          cache: pip
+          node-version: 24
 
       - name: Check that the weekly pull request builds
         env:
@@ -63,10 +62,10 @@ jobs:
 
           git fetch origin "$branch"
           git checkout --force --detach "$sha"
-          pip install -r requirements.txt
+          npm ci
 
           run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          if mkdocs build --strict; then
+          if npm run build; then
             state=success; desc="The site builds with no errors"
           else
             state=failure; desc="The site does not build - see the run log"

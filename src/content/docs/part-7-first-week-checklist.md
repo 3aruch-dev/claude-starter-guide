@@ -1,4 +1,7 @@
-# Part 7: Your first-week checklist
+---
+title: 'Part 7: Your first-week checklist'
+description: Nine things to tick off in your first week with Claude Code, from installing your tools to building and pushing your first project.
+---
 
 - [ ] GitHub and Claude accounts created
 - [ ] Package manager, Git, gh, Node and VS Code installed

@@ -1,47 +1,82 @@
-# Part 2: Install and set up Claude Code (the bedrock)
+---
+title: 'Part 2: Install and set up Claude Code (the bedrock)'
+description: Install Claude Code on Mac or Windows, log in, learn the essential controls and slash commands, and write a great CLAUDE.md.
+---
+
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## Step 2.1: Install Claude Code
 
 Always check the official page first, since the recommended method can change: **[code.claude.com/docs](https://code.claude.com/docs)** → Setup. *(Verified November 2026.)*
 
-**Mac (native installer, recommended):**
+<Steps>
 
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
+1. Run the native installer:
 
-**Windows (PowerShell, native installer):**
+   <Tabs syncKey="os">
+   <TabItem label="Mac" icon="apple">
 
-```powershell
-irm https://claude.ai/install.ps1 | iex
-```
+   **Mac (native installer, recommended):**
 
-**Alternatives:** Homebrew (Mac) or winget (Windows). These don't update automatically, so the native installer above is preferred. *(The old npm method is deprecated — don't use it.)*
+   ```bash
+   curl -fsSL https://claude.ai/install.sh | bash
+   ```
 
-```bash
-brew install --cask claude-code        # Mac
-winget install Anthropic.ClaudeCode    # Windows
-```
+   </TabItem>
+   <TabItem label="Windows" icon="seti:windows">
 
-!!! note "Windows note"
+   **Windows (PowerShell, native installer):**
 
-    No administrator rights needed. Works on Windows 10 (1809 or later) and 11. Git for Windows (Step 1.4) is recommended so Claude can use its Bash tool; without it, Claude Code falls back to PowerShell. WSL is optional.
+   ```powershell
+   irm https://claude.ai/install.ps1 | iex
+   ```
 
-Close and reopen your terminal, then check it:
+   :::note[Windows note]
+   No administrator rights needed. Works on Windows 10 (1809 or later) and 11. Git for Windows ([Step 1.4](/claude-starter-guide/part-1-foundations/#step-14-install-git)) is recommended so Claude can use its Bash tool; without it, Claude Code falls back to PowerShell. WSL is optional.
+   :::
 
-```bash
-claude --version
-```
+   </TabItem>
+   </Tabs>
 
-If something looks wrong, run the built-in health check:
+   **Alternatives:** Homebrew (Mac) or winget (Windows). These don't update automatically, so the native installer above is preferred. *(The old npm method is deprecated — don't use it.)*
 
-```bash
-claude doctor
-```
+   <Tabs syncKey="os">
+   <TabItem label="Mac" icon="apple">
+
+   ```bash
+   brew install --cask claude-code
+   ```
+
+   </TabItem>
+   <TabItem label="Windows" icon="seti:windows">
+
+   ```powershell
+   winget install Anthropic.ClaudeCode
+   ```
+
+   </TabItem>
+   </Tabs>
+
+2. Close and reopen your terminal, then check it:
+
+   ```bash
+   claude --version
+   ```
+
+3. If something looks wrong, run the built-in health check:
+
+   ```bash
+   claude doctor
+   ```
+
+</Steps>
 
 ## Step 2.2: Start Claude Code and log in
 
 Always start Claude **inside a project folder**, because Claude can see and change files in the folder you open it from.
+
+<Tabs syncKey="os">
+<TabItem label="Mac" icon="apple">
 
 ```bash
 cd ~/projects
@@ -50,7 +85,18 @@ cd my-first-project
 claude
 ```
 
-(On Windows, use `cd $HOME\projects` for the first line.)
+</TabItem>
+<TabItem label="Windows" icon="seti:windows">
+
+```powershell
+cd $HOME\projects
+mkdir my-first-project
+cd my-first-project
+claude
+```
+
+</TabItem>
+</Tabs>
 
 The first time, it will ask you to pick a theme and log in. Choose your **Claude account** (Pro/Max) and approve in the browser window that opens.
 
@@ -79,7 +125,7 @@ Type `/` to see them all. The essentials:
 
 - `/init` — Claude studies your project and writes a starter **CLAUDE.md** for it. Run this in every new project.
 - `/clear` — start fresh. Use it between unrelated tasks; old context makes Claude worse, not better.
-- `/compact` — summarise a long conversation to free up space. Use /context to see how full it is.
+- `/compact` — summarise a long conversation to free up space. Use `/context` to see how full it is.
 - `/model` — choose which Claude model to use.
 - `/permissions` — decide what Claude may do without asking.
 - `/mcp` — see and manage connected tools.
@@ -99,7 +145,7 @@ There are two kinds:
 
 A good CLAUDE.md is short and specific. Example:
 
-```markdown
+```markdown title="CLAUDE.md"
 # About me
 I'm not a developer. Explain what you're doing in plain English before you do it.
 
@@ -113,17 +159,17 @@ I'm not a developer. Explain what you're doing in plain English before you do it
 A personal website. Built with plain HTML and CSS.
 ```
 
-!!! tip
-
-    When Claude makes the same mistake twice, tell it: *"Add a rule to CLAUDE.md so you don't do that again."*
+:::tip
+When Claude makes the same mistake twice, tell it: *"Add a rule to CLAUDE.md so you don't do that again."*
+:::
 
 ## Step 2.7: Set safe permissions
 
 Run `/permissions` and allow the harmless, repetitive things (like reading files) so Claude stops asking every time, while still asking before deleting or pushing.
 
-!!! warning
-
-    You may see advice to run Claude with "skip all permissions". **Don't**, as a beginner. It lets Claude run anything without asking.
+:::caution
+You may see advice to run Claude with "skip all permissions". **Don't**, as a beginner. It lets Claude run anything without asking.
+:::
 
 ## Step 2.8: Other ways to use Claude Code
 

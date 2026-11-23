@@ -1,4 +1,7 @@
-# Part 0: Key words in plain English
+---
+title: 'Part 0: Key words in plain English'
+description: Terminal, package manager, Git, GitHub, MCP, skills and CLAUDE.md — the words you'll meet in this guide, explained simply.
+---
 
 - **Terminal (Mac) / PowerShell (Windows):** a window where you type instructions to your computer instead of clicking. It looks scary, but you only need a few commands.
 - **Command:** a line of text you type into the terminal.

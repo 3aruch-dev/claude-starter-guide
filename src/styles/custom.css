@@ -1,0 +1,175 @@
+/*
+ * Site-wide look and feel for The Claude Code Starter Guide.
+ * Starlight reads these colour and font variables everywhere, so changing a
+ * value here restyles the whole site.
+ */
+
+/* ---------- Dark mode (Starlight's default) ---------- */
+:root {
+	--sl-font: 'Inter Variable';
+	--sl-font-mono: 'JetBrains Mono Variable';
+
+	/* Accent: warm terracotta */
+	--sl-color-accent-low: hsl(16, 45%, 17%);
+	--sl-color-accent: hsl(16, 82%, 60%);
+	--sl-color-accent-high: hsl(20, 100%, 84%);
+
+	/* Slightly warm greys */
+	--sl-color-white: hsl(0, 0%, 100%);
+	--sl-color-gray-1: hsl(30, 12%, 93%);
+	--sl-color-gray-2: hsl(30, 6%, 78%);
+	--sl-color-gray-3: hsl(30, 5%, 58%);
+	--sl-color-gray-4: hsl(30, 5%, 38%);
+	--sl-color-gray-5: hsl(30, 6%, 24%);
+	--sl-color-gray-6: hsl(30, 8%, 15%);
+	--sl-color-black: hsl(30, 8%, 9%);
+
+	--sl-content-width: 48rem;
+	--sl-line-height: 1.7;
+
+	--guide-card-bg: hsl(30, 8%, 12%);
+	--guide-card-border: hsl(30, 6%, 22%);
+	--guide-glow: hsla(16, 90%, 55%, 0.22);
+}
+
+/* ---------- Light mode ---------- */
+:root[data-theme='light'] {
+	--sl-color-accent-low: hsl(22, 90%, 93%);
+	--sl-color-accent: hsl(15, 75%, 42%);
+	--sl-color-accent-high: hsl(15, 70%, 26%);
+
+	--sl-color-white: hsl(30, 10%, 10%);
+	--sl-color-gray-1: hsl(30, 8%, 16%);
+	--sl-color-gray-2: hsl(30, 6%, 24%);
+	--sl-color-gray-3: hsl(30, 5%, 38%);
+	--sl-color-gray-4: hsl(30, 5%, 56%);
+	--sl-color-gray-5: hsl(30, 8%, 80%);
+	--sl-color-gray-6: hsl(36, 25%, 95%);
+	--sl-color-gray-7: hsl(36, 30%, 97.5%);
+	--sl-color-black: hsl(0, 0%, 100%);
+
+	--guide-card-bg: hsl(0, 0%, 100%);
+	--guide-card-border: hsl(30, 12%, 87%);
+	--guide-glow: hsla(16, 90%, 60%, 0.16);
+}
+
+/* ---------- Typography ---------- */
+.sl-markdown-content :is(h1, h2, h3, h4) {
+	letter-spacing: -0.015em;
+	font-weight: 650;
+}
+h1#_top {
+	letter-spacing: -0.025em;
+	font-weight: 750;
+}
+.sl-markdown-content :not(pre) > code {
+	border-radius: 0.3rem;
+	padding: 0.1em 0.35em;
+}
+/* Keyboard keys and bold key names read a little better with a hint of colour */
+.sl-markdown-content kbd {
+	border: 1px solid var(--sl-color-gray-5);
+	border-bottom-width: 2px;
+	border-radius: 0.3rem;
+	padding: 0.05em 0.4em;
+	font-size: 0.9em;
+	font-family: var(--__sl-font-mono);
+}
+
+/* Softer, rounder code blocks and asides */
+.expressive-code .frame {
+	border-radius: 0.6rem;
+	overflow: hidden;
+}
+.starlight-aside {
+	border-radius: 0.5rem;
+}
+
+/* ---------- Tabs: make the Mac / Windows choice stand out ---------- */
+starlight-tabs [role='tablist'] {
+	border-bottom-width: 1px;
+}
+starlight-tabs [role='tab'][aria-selected='true'] {
+	font-weight: 650;
+}
+
+/* ---------- Splash (home) page ---------- */
+[data-has-hero] .page {
+	background:
+		radial-gradient(60rem 30rem at 85% -5rem, var(--guide-glow), transparent 70%),
+		radial-gradient(40rem 24rem at -10% 10rem, var(--guide-glow), transparent 70%);
+	background-repeat: no-repeat;
+}
+[data-has-hero] header.header {
+	background-color: transparent;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+}
+.hero h1 {
+	font-weight: 800;
+	letter-spacing: -0.035em;
+	line-height: 1.05;
+	background: linear-gradient(120deg, var(--sl-color-white) 30%, var(--sl-color-accent) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.hero .tagline {
+	font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.35rem);
+	line-height: 1.5;
+	max-width: 34rem;
+}
+.hero img {
+	filter: drop-shadow(0 24px 48px hsla(16, 60%, 20%, 0.35));
+}
+@media (min-width: 50rem) {
+	.hero h1 {
+		font-size: clamp(2.75rem, 1.5rem + 2.6vw, 4rem);
+	}
+}
+
+/* Section heading used on the home page */
+.guide-eyebrow {
+	color: var(--sl-color-accent);
+	font-size: var(--sl-text-sm);
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-bottom: -0.75rem !important;
+}
+
+/* ---------- Asides: calm teal tips that sit well beside the terracotta ---------- */
+:root {
+	--guide-tip-low: hsl(172, 30%, 15%);
+	--guide-tip: hsl(170, 55%, 45%);
+	--guide-tip-high: hsl(168, 60%, 78%);
+}
+:root[data-theme='light'] {
+	--guide-tip-low: hsl(168, 45%, 93%);
+	--guide-tip: hsl(172, 60%, 36%);
+	--guide-tip-high: hsl(174, 70%, 20%);
+}
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--guide-tip-high);
+	--sl-color-asides-border: var(--guide-tip);
+	background-color: var(--guide-tip-low);
+}
+
+/* ---------- Header title: shorter on phones so it never gets cut off ---------- */
+.site-title {
+	letter-spacing: -0.01em;
+}
+@media (max-width: 30rem) {
+	.site-title {
+		font-size: 0.875rem;
+		min-width: 0;
+	}
+	.site-title img {
+		height: 1.75rem;
+	}
+	.site-title span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}

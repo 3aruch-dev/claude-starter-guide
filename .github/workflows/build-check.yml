@@ -1,9 +1,10 @@
 name: Build check
 
 # Builds the site for every pull request into main, so a broken change is
-# caught before it is merged. (Pull requests opened by the weekly update job
-# are checked by a step in weekly-update.yml instead, because GitHub does not
-# run workflows on pull requests opened by github-actions[bot].)
+# caught before it is merged. The build also fails if any link between pages
+# is broken. (Pull requests opened by the weekly update job are checked by a
+# step in weekly-update.yml instead, because GitHub does not run workflows on
+# pull requests opened by github-actions[bot].)
 on:
   pull_request:
     branches: [main]
@@ -17,13 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-node@v7
         with:
-          python-version: "3.12"
-          cache: pip
+          node-version: 24
+          cache: npm
 
-      - name: Install MkDocs Material
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Build site (fails on any warning)
-        run: mkdocs build --strict
+      - name: Build site (fails on errors or broken links)
+        run: npm run build

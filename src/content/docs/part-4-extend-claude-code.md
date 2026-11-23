@@ -1,4 +1,7 @@
-# Part 4: Extend Claude Code
+---
+title: 'Part 4: Extend Claude Code'
+description: Give Claude Code new abilities with MCP servers, skills, custom slash commands, subagents, hooks and plugins.
+---
 
 ## 4.1 MCP servers: give Claude new abilities
 
@@ -10,9 +13,9 @@ claude mcp add <name> -- <command to start it>
 
 Then check it inside Claude with `/mcp`. Each server's own page gives its exact command.
 
-!!! warning "Rule"
-
-    only install MCP servers from sources you trust. They can access your data. Start with two or three; too many slows Claude down and clutters its thinking.
+:::caution[Rule]
+Only install MCP servers from sources you trust. They can access your data. Start with two or three; too many slows Claude down and clutters its thinking.
+:::
 
 ## 4.2 Skills: teach Claude repeatable expertise
 
@@ -21,7 +24,7 @@ A skill is a folder with a `SKILL.md` file (instructions) plus any helper files.
 - Personal skills: `~/.claude/skills/`
 - Project skills: `.claude/skills/` inside the project
 
-Easiest way to make one: *"Create a skill for how I like my weekly reports written."* Anthropic also publishes official skills (documents, spreadsheets, presentations, PDFs) — see Part 6.
+Easiest way to make one: *"Create a skill for how I like my weekly reports written."* Anthropic also publishes official skills (documents, spreadsheets, presentations, PDFs) — see [Part 6](/claude-starter-guide/part-6-living-toolkit/).
 
 ## 4.3 Your own slash commands (now part of skills)
 
