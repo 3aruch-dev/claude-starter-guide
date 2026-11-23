@@ -28,7 +28,7 @@ Easiest way to make one: *"Create a skill for how I like my weekly reports writt
 
 ## 4.3 Your own slash commands (now part of skills)
 
-Custom slash commands have been merged into skills. To save a prompt you use often, create `.claude/skills/review/SKILL.md` with a short name and description at the top, then type `/review` to run it. Old `.claude/commands/` files still work, but use skills for anything new. *(Verified November 2026.)*
+Custom slash commands have been merged into skills. To save a prompt you use often, create `.claude/skills/review/SKILL.md` with a short name and description at the top, then type `/review` to run it. (Note: `/review` is also a built-in alias for `/code-review`, so pick a different name such as `/weekly-report` to avoid a clash.) Old `.claude/commands/` files still work, but use skills for anything new. *(Verified November 2026.)*
 
 ## 4.4 Subagents
 
