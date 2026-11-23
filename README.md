@@ -35,7 +35,7 @@ pages is broken.
 | The guide's pages                      | `src/content/docs/`                     |
 | Site settings, sidebar, social preview | `astro.config.mjs`                      |
 | Colours and fonts                      | `src/styles/custom.css`                 |
-| Home page cards and footer             | `src/components/`                       |
+| Home page cards, checklist, footer     | `src/components/`                       |
 | Logo, hero picture                     | `src/assets/`                           |
 | Favicon, LinkedIn preview image        | `public/`                               |
 | Publishing and weekly update jobs      | `.github/workflows/`                    |

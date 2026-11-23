@@ -28,6 +28,10 @@ export default defineConfig({
 			social: [{ icon: 'github', label: 'GitHub', href: repo }],
 			editLink: { baseUrl: `${repo}/edit/main/` },
 			lastUpdated: true,
+			expressiveCode: {
+				// Long commands wrap onto the next line instead of hiding off-screen on phones.
+				defaultProps: { wrap: true, preserveIndent: true },
+			},
 			customCss: [
 				'@fontsource-variable/inter',
 				'@fontsource-variable/jetbrains-mono',
@@ -47,7 +51,15 @@ export default defineConfig({
 					attrs: { property: 'og:image:alt', content: `${title} — for Mac and Windows` },
 				},
 				{ tag: 'meta', attrs: { name: 'twitter:image', content: socialImage } },
-				{ tag: 'meta', attrs: { name: 'theme-color', content: '#c2522d' } },
+				// Colour of the phone's browser bar, matching light and dark mode.
+				{
+					tag: 'meta',
+					attrs: { name: 'theme-color', content: '#faf7f4', media: '(prefers-color-scheme: light)' },
+				},
+				{
+					tag: 'meta',
+					attrs: { name: 'theme-color', content: '#1a1715', media: '(prefers-color-scheme: dark)' },
+				},
 			],
 			sidebar: [
 				{
