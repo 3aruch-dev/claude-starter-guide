@@ -1,0 +1,44 @@
+---
+// Keeps Starlight's normal footer ("Edit this page", "Last updated" and the
+// previous/next links) and adds a credit line linking to the author's GitHub.
+import Default from '@astrojs/starlight/components/Footer.astro';
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<Default><slot /></Default>
+
+<div class="guide-credit">
+	<span>The Claude Code Starter Guide</span>
+	<span aria-hidden="true">·</span>
+	<a href="https://github.com/3aruch-dev">
+		<Icon name="github" size="1rem" />
+		Made by 3aruch-dev on GitHub
+	</a>
+	<span aria-hidden="true">·</span>
+	<a href="https://github.com/3aruch-dev/claude-starter-guide/issues">Suggest an improvement</a>
+</div>
+
+<style>
+	.guide-credit {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem 0.6rem;
+		margin-top: 2.5rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--sl-color-hairline);
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+	.guide-credit a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: var(--sl-color-gray-2);
+		text-decoration: none;
+	}
+	.guide-credit a:hover {
+		color: var(--sl-color-accent);
+	}
+</style>

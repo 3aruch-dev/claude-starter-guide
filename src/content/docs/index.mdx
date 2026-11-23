@@ -1,0 +1,86 @@
+---
+title: The Claude Code Starter Guide
+description: From zero to using AI better than 99% of your peers — for Mac and Windows. A free, beginner-friendly guide to Claude Code.
+template: splash
+lastUpdated: false
+editUrl: false
+pagefind: true
+hero:
+  title: The Claude Code Starter Guide
+  tagline: From zero to using AI better than 99% of your peers — for Mac and Windows
+  image:
+    file: ../../assets/hero.svg
+    alt: A Mac terminal running Claude Code in front of a Windows PowerShell window
+  actions:
+    - text: Start here
+      link: /claude-starter-guide/part-0-key-words/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/3aruch-dev/claude-starter-guide
+      icon: github
+      variant: minimal
+---
+
+import { CardGrid } from '@astrojs/starlight/components';
+import PartCard from '../../components/PartCard.astro';
+
+<p class="guide-eyebrow">What's inside</p>
+
+## Nine short parts, one clear path
+
+<CardGrid>
+	<PartCard part="Part 0" title="Key words in plain English" icon="open-book" href="/claude-starter-guide/part-0-key-words/">
+		Terminal, Git, MCP, skills — every term you'll meet, explained in one line each.
+	</PartCard>
+	<PartCard part="Part 1" title="Foundations — set up your computer" icon="laptop" href="/claude-starter-guide/part-1-foundations/">
+		Accounts, the terminal, a package manager, Git, Node.js and VS Code, step by step.
+	</PartCard>
+	<PartCard part="Part 2" title="Install and set up Claude Code (the bedrock)" icon="rocket" href="/claude-starter-guide/part-2-claude-code/">
+		Install it, log in, learn the controls and write a great CLAUDE.md.
+	</PartCard>
+	<PartCard part="Part 3" title="Work like the top 1%" icon="star" href="/claude-starter-guide/part-3-work-like-the-top-1/">
+		The habits that separate people: plan first, give context, keep it clean.
+	</PartCard>
+	<PartCard part="Part 4" title="Extend Claude Code" icon="puzzle" href="/claude-starter-guide/part-4-extend-claude-code/">
+		MCP servers, skills, subagents, hooks and plugins.
+	</PartCard>
+	<PartCard part="Part 5" title="Beyond Claude Code — the wider AI toolkit" icon="setting" href="/claude-starter-guide/part-5-wider-ai-toolkit/">
+		Codex, chat apps, AI editors and the supporting tools worth having.
+	</PartCard>
+	<PartCard part="Part 6" title="The Living Toolkit" icon="random" href="/claude-starter-guide/part-6-living-toolkit/">
+		The best current tools, skills and MCP servers — reviewed every week.
+	</PartCard>
+	<PartCard part="Part 7" title="Your first-week checklist" icon="approve-check" href="/claude-starter-guide/part-7-first-week-checklist/">
+		Nine things to tick off in your first week.
+	</PartCard>
+	<PartCard part="Part 8" title="Getting unstuck" icon="information" href="/claude-starter-guide/part-8-getting-unstuck/">
+		Quick fixes for the problems beginners hit most.
+	</PartCard>
+</CardGrid>
+
+## How to use this guide
+
+This guide assumes **no technical background**. Every step tells you exactly what to click or type, and why. Go in order the first time; later, jump to what you need.
+
+The guide has two layers:
+
+- **The Foundations (Parts 1–4):** things that rarely change, like opening a terminal and installing Claude Code.
+- **The Living Toolkit (Part 6):** the best current tools, skills and MCP servers. This part changes often and is reviewed regularly.
+
+When you see a box like this, type it exactly as shown, then press **Enter**. (Use the copy button in its top-right corner to avoid typos.)
+
+```text
+example command
+```
+
+Where Mac and Windows steps differ, you'll see tabs like **Mac | Windows**. Pick yours once and the whole guide remembers it.
+
+:::tip
+Commands and install steps change over time. If something doesn't match what you see, check the official link given in that section. That link is always the source of truth.
+:::
+
+## How this guide stays current
+
+This guide lives in a GitHub repository. A scheduled job runs Claude Code weekly to check the [official sources in 6.1](/claude-starter-guide/part-6-living-toolkit/#61-official-sources-to-follow-check-these-first) for changes, then proposes updates as a pull request. A human reviews and approves every change before it goes live. The Foundations (Parts 1–4) change rarely; the Living Toolkit (Part 6) changes often.
+
+*Have a suggestion? [Open an issue on the guide's GitHub repo](https://github.com/3aruch-dev/claude-starter-guide/issues).*

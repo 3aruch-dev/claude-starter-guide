@@ -1,8 +1,11 @@
-# Part 6: The Living Toolkit
+---
+title: 'Part 6: The Living Toolkit'
+description: The best current Claude Code tools, MCP servers, skills and community resources — reviewed every week against official sources.
+---
 
-!!! info "Last reviewed"
-
-    November 2026. This section is updated regularly. Items marked **Core** have stayed useful over time; **Trending** items are newer and worth trying.
+:::note[Last reviewed: November 2026]{icon="approve-check-circle"}
+This section is updated regularly. Items marked **Core** have stayed useful over time; **Trending** items are newer and worth trying.
+:::
 
 ## 6.1 Official sources to follow (check these first)
 
@@ -16,7 +19,7 @@
 
 - **Core — Context7:** pulls up-to-date library documentation into Claude, so it stops using outdated code.
 - **Core — Playwright:** lets Claude open and control a browser to test what it built.
-- **Core — GitHub:** issues, pull requests and repos (or just let Claude use the `gh` tool from Step 1.5).
+- **Core — GitHub:** issues, pull requests and repos (or just let Claude use the `gh` tool from [Step 1.5](/claude-starter-guide/part-1-foundations/#step-15-install-the-github-command-line-tool)).
 - **Situational:** Notion, Slack, Google Drive, Linear, Supabase, Figma — add only when you actually use that tool.
 
 ## 6.3 Recommended skills
@@ -30,6 +33,6 @@
 - Curated "awesome Claude Code" lists on GitHub (search *awesome claude code*).
 - Plugin marketplaces, browsable via `/plugin`.
 
-!!! warning
-
-    **Safety rule for anything community-made:** check the stars, recent activity and author before installing. Read a skill's or plugin's files, or ask Claude to review them for anything risky, before using it.
+:::caution
+**Safety rule for anything community-made:** check the stars, recent activity and author before installing. Read a skill's or plugin's files, or ask Claude to review them for anything risky, before using it.
+:::

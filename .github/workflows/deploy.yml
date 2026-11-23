@@ -1,10 +1,15 @@
-name: Publish site
+name: Deploy to GitHub Pages
 
+# Builds the Astro Starlight site and publishes it to GitHub Pages every time
+# something is pushed to main. Follows Astro's official GitHub Pages guide:
+# https://docs.astro.build/en/guides/deploy/github/
 on:
   push:
     branches: [main]
+  # Also runnable by hand from the Actions tab.
   workflow_dispatch:
 
+# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
@@ -19,24 +24,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-
-      - uses: actions/setup-python@v7
+      - name: Checkout your repository using git
+        uses: actions/checkout@v7
         with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install MkDocs Material
-        run: pip install -r requirements.txt
-
-      - name: Build site (fails on any warning)
-        run: mkdocs build --strict
-
-      - uses: actions/configure-pages@v6
-
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: site
+          # Full history, so each page's "Last updated" date is correct.
+          fetch-depth: 0
+      - name: Install, build, and upload your site
+        uses: withastro/action@v6
 
   deploy:
     needs: build
@@ -45,5 +39,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v5

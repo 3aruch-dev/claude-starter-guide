@@ -1,6 +1,20 @@
-site/
-.venv/
-__pycache__/
-.DS_Store
-*.docx
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment variables and secrets
 .env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# Word exports of the guide
+*.docx
