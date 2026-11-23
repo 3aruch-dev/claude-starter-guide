@@ -7,7 +7,7 @@ description: Give Claude Code new abilities with MCP servers, skills, custom sla
 
 MCP servers connect Claude to other tools: browsers, GitHub, databases, docs, Notion, Slack and more. Add one from the terminal, for example:
 
-```bash
+```bash title="Terminal or PowerShell"
 claude mcp add <name> -- <command to start it>
 ```
 

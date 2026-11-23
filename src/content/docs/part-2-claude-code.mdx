@@ -18,7 +18,7 @@ Always check the official page first, since the recommended method can change: *
 
    **Mac (native installer, recommended):**
 
-   ```bash
+   ```bash title="Terminal"
    curl -fsSL https://claude.ai/install.sh | bash
    ```
 
@@ -27,7 +27,7 @@ Always check the official page first, since the recommended method can change: *
 
    **Windows (PowerShell, native installer):**
 
-   ```powershell
+   ```powershell title="PowerShell"
    irm https://claude.ai/install.ps1 | iex
    ```
 
@@ -43,14 +43,14 @@ Always check the official page first, since the recommended method can change: *
    <Tabs syncKey="os">
    <TabItem label="Mac" icon="apple">
 
-   ```bash
+   ```bash title="Terminal"
    brew install --cask claude-code
    ```
 
    </TabItem>
    <TabItem label="Windows" icon="seti:windows">
 
-   ```powershell
+   ```powershell title="PowerShell"
    winget install Anthropic.ClaudeCode
    ```
 
@@ -59,13 +59,13 @@ Always check the official page first, since the recommended method can change: *
 
 2. Close and reopen your terminal, then check it:
 
-   ```bash
+   ```bash title="Terminal or PowerShell"
    claude --version
    ```
 
 3. If something looks wrong, run the built-in health check:
 
-   ```bash
+   ```bash title="Terminal or PowerShell"
    claude doctor
    ```
 
@@ -78,7 +78,7 @@ Always start Claude **inside a project folder**, because Claude can see and chan
 <Tabs syncKey="os">
 <TabItem label="Mac" icon="apple">
 
-```bash
+```bash title="Terminal"
 cd ~/projects
 mkdir my-first-project
 cd my-first-project
@@ -88,7 +88,7 @@ claude
 </TabItem>
 <TabItem label="Windows" icon="seti:windows">
 
-```powershell
+```powershell title="PowerShell"
 cd $HOME\projects
 mkdir my-first-project
 cd my-first-project

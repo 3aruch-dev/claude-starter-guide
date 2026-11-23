@@ -1,0 +1,190 @@
+---
+// Turns the Markdown task list inside it into a real, tickable checklist.
+// Progress is saved in the reader's own browser only (nothing is sent anywhere).
+// Without JavaScript, the list still shows (the boxes just can't be ticked).
+interface Props {
+	id: string;
+}
+const { id } = Astro.props;
+---
+
+<guide-checklist data-id={id}>
+	<div class="progress not-content">
+		<div class="row">
+			<span class="count" aria-live="polite">Your progress</span>
+			<button type="button" class="reset">Start over</button>
+		</div>
+		<div class="bar" aria-hidden="true"><span></span></div>
+	</div>
+	<slot />
+</guide-checklist>
+
+<script>
+	class GuideChecklist extends HTMLElement {
+		connectedCallback() {
+			const key = `guide-checklist:${this.dataset.id}`;
+			const boxes = [...this.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
+			if (!boxes.length) return;
+
+			let saved: boolean[] = [];
+			try {
+				saved = JSON.parse(localStorage.getItem(key) || '[]');
+			} catch {}
+
+			const count = this.querySelector<HTMLElement>('.count')!;
+			const fill = this.querySelector<HTMLElement>('.bar span')!;
+			const update = () => {
+				const done = boxes.filter((b) => b.checked).length;
+				count.textContent =
+					done === boxes.length
+						? `All ${done} done — brilliant work!`
+						: `${done} of ${boxes.length} done`;
+				fill.style.width = `${(done / boxes.length) * 100}%`;
+				this.toggleAttribute('data-complete', done === boxes.length);
+				try {
+					localStorage.setItem(key, JSON.stringify(boxes.map((b) => b.checked)));
+				} catch {}
+			};
+
+			boxes.forEach((box, i) => {
+				box.disabled = false;
+				box.checked = Boolean(saved[i]);
+				const item = box.closest('li')!;
+				// Make the whole row tappable by wrapping it in a <label>.
+				const label = document.createElement('label');
+				const text = document.createElement('span');
+				while (item.firstChild) text.appendChild(item.firstChild);
+				label.append(box, text);
+				item.appendChild(label);
+				box.addEventListener('change', update);
+			});
+
+			this.querySelector('.reset')!.addEventListener('click', () => {
+				boxes.forEach((b) => (b.checked = false));
+				update();
+			});
+			update();
+		}
+	}
+	customElements.define('guide-checklist', GuideChecklist);
+</script>
+
+<style>
+	guide-checklist {
+		display: block;
+	}
+	.progress {
+		margin-bottom: 1.25rem;
+		padding: 1rem 1.1rem;
+		border: 1px solid var(--guide-card-border);
+		border-radius: 0.9rem;
+		background: var(--guide-card-bg);
+	}
+	.row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	.count {
+		font-weight: 650;
+		color: var(--sl-color-white);
+	}
+	.reset {
+		min-height: 2.75rem;
+		padding: 0 0.9rem;
+		border: 1px solid var(--guide-card-border);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--sl-color-gray-2);
+		font: inherit;
+		font-size: var(--sl-text-sm);
+		cursor: pointer;
+	}
+	.reset:hover {
+		border-color: var(--sl-color-accent);
+		color: var(--sl-color-text-accent);
+	}
+	.bar {
+		height: 0.5rem;
+		margin-top: 0.75rem;
+		border-radius: 999px;
+		background: var(--sl-color-gray-6);
+		overflow: hidden;
+	}
+	.bar span {
+		display: block;
+		height: 100%;
+		width: 0;
+		border-radius: inherit;
+		background: linear-gradient(90deg, var(--sl-color-accent), hsl(28, 95%, 60%));
+		transition: width 0.3s ease;
+	}
+	guide-checklist[data-complete] .bar span {
+		background: var(--guide-tip);
+	}
+
+	/* Hide the progress box when JavaScript is off (the boxes can't be ticked then) */
+	@media (scripting: none) {
+		.progress {
+			display: none;
+		}
+	}
+
+	/* The list is styled as cards from the start, so nothing jumps when the script runs */
+	guide-checklist :global(ul) {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		gap: 0.6rem;
+	}
+	:global(.sl-markdown-content) guide-checklist :global(ul > li) {
+		margin: 0;
+	}
+	/* Each row is a card with the tick box pinned on the left. The same box model is
+	   used before and after the script wraps the row in a <label>, so nothing moves. */
+	guide-checklist :global(li:not(:has(> label))),
+	guide-checklist :global(li label) {
+		display: block;
+		position: relative;
+		min-height: 3.25rem;
+		padding: 0.8rem 1rem 0.8rem 3.2rem;
+		border: 1px solid var(--guide-card-border);
+		border-radius: 0.75rem;
+		background: var(--guide-card-bg);
+		cursor: pointer;
+		line-height: 1.5;
+		transition:
+			border-color 0.15s ease,
+			background-color 0.15s ease;
+		-webkit-tap-highlight-color: transparent;
+	}
+	guide-checklist :global(li:has(> label)) {
+		padding: 0;
+		border: 0;
+		background: none;
+	}
+	guide-checklist :global(li label:hover) {
+		border-color: var(--sl-color-accent);
+	}
+	guide-checklist :global(li input[type='checkbox']) {
+		position: absolute;
+		inset-inline-start: 1rem;
+		top: 0.95rem;
+		width: 1.35rem;
+		height: 1.35rem;
+		margin: 0;
+		accent-color: var(--sl-color-accent);
+		cursor: pointer;
+	}
+	guide-checklist :global(li label:has(input:checked)) {
+		background: var(--sl-color-accent-low);
+		border-color: transparent;
+		color: var(--sl-color-gray-3);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.bar span {
+			transition: none;
+		}
+	}
+</style>

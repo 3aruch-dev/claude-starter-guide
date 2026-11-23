@@ -53,7 +53,7 @@ Pin the terminal to your Dock (Mac) or taskbar (Windows). You'll open it a lot.
 
 4. Check it worked:
 
-   ```bash
+   ```bash title="Terminal"
    brew --version
    ```
 
@@ -64,7 +64,7 @@ Pin the terminal to your Dock (Mac) or taskbar (Windows). You'll open it a lot.
 
 **Windows — winget.** It comes built into Windows 10 and 11. Check it:
 
-```powershell
+```powershell title="PowerShell"
 winget --version
 ```
 
@@ -82,14 +82,14 @@ If you get an error, open the **Microsoft Store**, search for **App Installer**,
    <Tabs syncKey="os">
    <TabItem label="Mac" icon="apple">
 
-   ```bash
+   ```bash title="Terminal"
    brew install git
    ```
 
    </TabItem>
    <TabItem label="Windows" icon="seti:windows">
 
-   ```powershell
+   ```powershell title="PowerShell"
    winget install --id Git.Git -e
    ```
 
@@ -98,13 +98,13 @@ If you get an error, open the **Microsoft Store**, search for **App Installer**,
 
 2. Then **close and reopen** your terminal (new installs only show up in a fresh window). Check it:
 
-   ```bash
+   ```bash title="Terminal or PowerShell"
    git --version
    ```
 
 3. Tell Git who you are (use your GitHub email):
 
-   ```bash
+   ```bash title="Terminal or PowerShell"
    git config --global user.name "Your Name"
    git config --global user.email "you@example.com"
    ```
@@ -122,14 +122,14 @@ This lets you log in to GitHub from the terminal, and lets Claude create repos a
    <Tabs syncKey="os">
    <TabItem label="Mac" icon="apple">
 
-   ```bash
+   ```bash title="Terminal"
    brew install gh
    ```
 
    </TabItem>
    <TabItem label="Windows" icon="seti:windows">
 
-   ```powershell
+   ```powershell title="PowerShell"
    winget install --id GitHub.cli -e
    ```
 
@@ -138,7 +138,7 @@ This lets you log in to GitHub from the terminal, and lets Claude create repos a
 
 2. Reopen the terminal, then log in and follow the prompts (choose **GitHub.com**, **HTTPS**, and **Login with a web browser**):
 
-   ```bash
+   ```bash title="Terminal or PowerShell"
    gh auth login
    ```
 
@@ -155,14 +155,14 @@ Many AI tools, including Codex and lots of MCP servers, need Node.
    <Tabs syncKey="os">
    <TabItem label="Mac" icon="apple">
 
-   ```bash
+   ```bash title="Terminal"
    brew install node
    ```
 
    </TabItem>
    <TabItem label="Windows" icon="seti:windows">
 
-   ```powershell
+   ```powershell title="PowerShell"
    winget install OpenJS.NodeJS.LTS
    ```
 
@@ -171,7 +171,7 @@ Many AI tools, including Codex and lots of MCP servers, need Node.
 
 2. Reopen the terminal and check both:
 
-   ```bash
+   ```bash title="Terminal or PowerShell"
    node --version
    npm --version
    ```
@@ -187,14 +187,14 @@ You won't write much code yourself, but you'll want to *see* what Claude builds.
 <Tabs syncKey="os">
 <TabItem label="Mac" icon="apple">
 
-```bash
+```bash title="Terminal"
 brew install --cask visual-studio-code
 ```
 
 </TabItem>
 <TabItem label="Windows" icon="seti:windows">
 
-```powershell
+```powershell title="PowerShell"
 winget install Microsoft.VisualStudioCode
 ```
 
@@ -208,7 +208,7 @@ Keep all your AI projects in one folder.
 <Tabs syncKey="os">
 <TabItem label="Mac" icon="apple">
 
-```bash
+```bash title="Terminal"
 mkdir ~/projects
 cd ~/projects
 ```
@@ -216,7 +216,7 @@ cd ~/projects
 </TabItem>
 <TabItem label="Windows" icon="seti:windows">
 
-```powershell
+```powershell title="PowerShell"
 mkdir $HOME\projects
 cd $HOME\projects
 ```
