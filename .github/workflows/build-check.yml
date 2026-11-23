@@ -1,0 +1,29 @@
+name: Build check
+
+# Builds the site for every pull request into main, so a broken change is
+# caught before it is merged. (Pull requests opened by the weekly update job
+# are checked by a step in weekly-update.yml instead, because GitHub does not
+# run workflows on pull requests opened by github-actions[bot].)
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install MkDocs Material
+        run: pip install -r requirements.txt
+
+      - name: Build site (fails on any warning)
+        run: mkdocs build --strict
