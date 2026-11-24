@@ -18,3 +18,7 @@ npm-debug.log*
 
 # Word exports of the guide
 *.docx
+
+# leftovers from the old MkDocs version of the site
+site/
+.venv/
