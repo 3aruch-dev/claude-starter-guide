@@ -32,7 +32,7 @@ Custom slash commands have been merged into skills. To save a prompt you use oft
 
 ## 4.4 Subagents
 
-Run `/agents` to create specialists (a code reviewer, a researcher, a tester), each with its own instructions and tools. They keep your main conversation clean. When you're ready for teams of agents working together, see [Part 9](/claude-starter-guide/part-9-going-further/#92-subagents-and-orchestrators).
+Subagents are specialists (a code reviewer, a researcher, a tester), each with its own instructions and tools. They keep your main conversation clean. To make one, just ask Claude, e.g. *"Create a code-reviewer subagent for this project."* It saves a small Markdown file in `.claude/agents/` (this project) or `~/.claude/agents/` (all your projects), which you can edit yourself. *(Verified November 2026: `/agents` no longer opens a step-by-step setup; it points you to these folders.)* When you're ready for teams of agents working together, see [Part 9](/claude-starter-guide/part-9-going-further/#92-subagents-and-orchestrators).
 
 ## 4.5 Hooks
 
