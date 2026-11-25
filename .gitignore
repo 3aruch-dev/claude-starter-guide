@@ -22,3 +22,6 @@ npm-debug.log*
 # leftovers from the old MkDocs version of the site
 site/
 .venv/
+
+# internal design notes and plans
+docs/superpowers/
