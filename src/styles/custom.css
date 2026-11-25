@@ -144,10 +144,8 @@ starlight-tabs [role='tab'][aria-selected='true'] {
 	font-weight: 800;
 	letter-spacing: -0.035em;
 	line-height: 1.05;
-	background: linear-gradient(120deg, var(--sl-color-white) 30%, var(--sl-color-accent) 100%);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
+	color: var(--sl-color-white);
+	text-wrap: balance;
 }
 .hero .tagline {
 	font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.35rem);
@@ -189,6 +187,17 @@ starlight-tabs [role='tab'][aria-selected='true'] {
 	--sl-color-asides-border: var(--guide-tip);
 	background-color: var(--guide-tip-low);
 }
+/* Notes: warm neutral with a terracotta edge, instead of Starlight's default blue */
+.starlight-aside--note {
+	--sl-color-asides-text-accent: var(--sl-color-accent-high);
+	--sl-color-asides-border: var(--sl-color-accent);
+	background-color: var(--sl-color-gray-6);
+}
+
+/* Sidebar badges ("Updated weekly") use the body font, not the code font */
+.sidebar-content .sl-badge {
+	font-family: var(--__sl-font);
+}
 
 /* ---------- Header title: shorter on phones so it never gets cut off ---------- */
 .site-title {
@@ -227,6 +236,7 @@ starlight-tabs [role='tab'][aria-selected='true'] {
 	font-size: var(--sl-text-sm);
 	color: var(--sl-color-gray-3);
 	text-align: center;
+	text-wrap: balance;
 }
 .guide-stats strong {
 	color: var(--sl-color-white);
