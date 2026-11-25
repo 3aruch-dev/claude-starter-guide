@@ -96,6 +96,10 @@ export default defineConfig({
 						{ label: 'Part 8: Getting unstuck', slug: 'part-8-getting-unstuck' },
 					],
 				},
+				{
+					label: 'Going further',
+					items: [{ label: 'Part 9: Going further', slug: 'part-9-going-further' }],
+				},
 			],
 			// Fails the build if any link between pages is broken.
 			plugins: [starlightLinksValidator()],

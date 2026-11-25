@@ -32,7 +32,7 @@ Custom slash commands have been merged into skills. To save a prompt you use oft
 
 ## 4.4 Subagents
 
-Run `/agents` to create specialists (a code reviewer, a researcher, a tester), each with its own instructions and tools. They keep your main conversation clean.
+Run `/agents` to create specialists (a code reviewer, a researcher, a tester), each with its own instructions and tools. They keep your main conversation clean. When you're ready for teams of agents working together, see [Part 9](/claude-starter-guide/part-9-going-further/#92-subagents-and-orchestrators).
 
 ## 4.5 Hooks
 

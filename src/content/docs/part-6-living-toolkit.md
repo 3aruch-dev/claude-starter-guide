@@ -3,7 +3,7 @@ title: 'Part 6: The Living Toolkit'
 description: The best current Claude Code tools, MCP servers, skills and community resources — reviewed every week against official sources.
 ---
 
-:::note[Last reviewed: 23 November 2026]{icon="approve-check-circle"}
+:::note[Last reviewed: 25 November 2026]{icon="approve-check-circle"}
 This section is updated regularly. Items marked **Core** have stayed useful over time; **Trending** items are newer and worth trying.
 :::
 
